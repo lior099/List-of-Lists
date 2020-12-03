@@ -445,29 +445,6 @@ class LolGraph:
                                                    self.directed, self.weighted]])
 
 
-if __name__ == '__main__':
-    list_of_list_graph = LolGraphUndirected(directed=False, weighted=True)
-    rootDir = os.path.join("..", "MultipartiteCommunityDetection", "data", "toy_network_1")
-    graph_filenames = [os.path.join(dirpath, file) for (dirpath, dirnames, filenames) in
-                              os.walk(rootDir) for file in filenames]
-    graph_filenames.sort()
-    # list_of_list_graph.convert_with_csv(graph_filenames, [(0, 1), (1, 0), (1, 2), (2, 1), (2, 0), (0, 2)], True, True)
-    list_of_list_graph.convert([[5, 1, 51], [2, 3, 23], [5, 3, 53], [4, 5, 45], [5,2,20]],  True, True)
-    # print("index list", list_of_list_graph._index_list)
-    # print("neighbors list", list_of_list_graph._neighbors_list)
-    # print("weights list", list_of_list_graph._weights_list)
-    # print("map_node_to_number", list_of_list_graph._map_node_to_number)
-    # print("map_number_to_node", list_of_list_graph._map_number_to_node)
-    # print("BACK "+ str(list_of_list_graph.convert_back()))
-    # # print("graph.adj - ", list_of_list_graph.graph_adjacency())
-    # print("number of edges", list_of_list_graph.number_of_edges())
-    # print("number of nodes", list_of_list_graph.number_of_nodes())
-    # print("sum_weight_from_node", list_of_list_graph.sum_weight_from_node("5a"))
-    # print("sum_weight_to_node", list_of_list_graph.sum_weight_to_node("5a"))
-    # print("all nodes to node", "8c", list_of_list_graph.all_nodes_directed_to_node("8c"))
-    # print("edge list:", list_of_list_graph.get_edge_list())
-    # print(list_of_list_graph.get_weight_of_edge("1a", "1b"))
-    print("nodes", list_of_list_graph.nodes())
 
 
 
