@@ -9,19 +9,19 @@ NOTE: Currently it's a WORK IN PROGRESS which means some bugs are expected, and 
 # How to use?
 
 For undirected graph:
-'''
+```
 
 undirected_graph = LolGraph(directed=False, weighted=True).
 
 undirected_graph.convert(edgeList) //For example: undirected_graph.convert([[1,2,3], [4,6,0.1]])
-'''
+```
 
 For directed graph:
-'''
+```
 directed_graph= DLGW(weighted=True).
 
 directed_graph.convert(edgeList) //For example: directed_graph.convert([[1,2,3], [4,6,0.1]])
-'''
+```
 
 Basically, you can use LolGraph class to create a directed graph, but some functions (in_degrees, predecessors) are not implemented in the most effecient way. 
 Therefore, use LolGraph for undirected graph, and DLGW for directed graph.
