@@ -4,14 +4,14 @@ Lior Shifman and Haim Isakov
 
 Our format is aimed at increasing the efficiency of our code by leveraging
 the computer's internal cache mechanism. We call this structure a List Of Lists Graph.
-The LOL Graph is composed of two arrays:\\
+The LOL Graph is composed of two arrays:
 1. An array which is composed of all the neighborhood lists placed back to
-back (Neighbors).\\
+back (Neighbors).
 2. An array which holds the starting index of each node's neighbor list (In-
 dices).
 
 There follows an example of the conversion routine for a simple graph. The given
-graph is the one composed of these edges: $(0->1, 0->2,0->3,2->0,3->1,3->2)$.
+graph is the one composed of these edges: (0->1, 0->2,0->3,2->0,3->1,3->2).
 The behavior of the conversion now depends on whether the graph is directed
 or undirected.
 
@@ -20,6 +20,7 @@ Neighbors: [1, 2, 3, 0, 1, 2]
 
 • Else, the results for the undirected graph are: Indices: [0, 3, 5, 7, 10],
 Neighbors: [1, 2, 3, 0, 3, 0, 3, 0, 1, 2]
+
 The LOL Graph object is designed around the principle of cache-awareness.
 The most important thing to remember when accessing the graph is that we are aiming to accelerate the computations by loading sections
 of the graph into the cache ahead of time for quick access. When using the
