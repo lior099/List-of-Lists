@@ -256,6 +256,9 @@ class LolGraph:
             index = self._index_list[number]
             while index < self._index_list[number + 1]:
                 to_node = self._map_number_to_node[self._neighbors_list[index]]
+                if not self.is_directed() and to_node < node:
+                    index += 1
+                    continue
                 if self.is_weighted():
                     weight = self._weights_list[index]
                     edge = [node, to_node, weight]
