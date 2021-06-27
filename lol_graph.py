@@ -143,23 +143,16 @@ class LolGraph:
         return len(self._neighbors_list)
 
     def get_edge_data(self, node1, node2, default=None):
+        number = self._map_node_to_number[node1]
+        idx = self._index_list[number]
+        idx_end = self._index_list[number + 1]
+        node1_neighbors = self._neighbors_list[idx: idx_end]
+        node2_index = self.binary_search(node1_neighbors, self._map_node_to_number[node2])
+        if node2_index == -1:
+            return default
         if self.is_weighted():
-            number = self._map_node_to_number[node1]
-            idx = self._index_list[number]
-            idx_end = self._index_list[number + 1]
-            node1_neighbors = self._neighbors_list[idx: idx_end]
-            node2_index = self.binary_search(node1_neighbors, self._map_node_to_number[node2])
-            if node2_index != -1:
-            # if self._map_node_to_number[node2] in node1_neighbors:
-            #     node2_index = node1_neighbors.index(self._map_node_to_number[node2])
-                return {"weight": self._weights_list[idx + node2_index]}
-            else:
-                if default is not None:
-                    return default
-                else:
-                    return {'weight': 0}
-        else:
-            return {'weight': 1}
+            return {"weight": self._weights_list[idx + node2_index]}
+        return {}
 
     # input: csv file containing edges list, in the form of [[5,1],[2,3],[5,3],[4,5]]
     def convert_with_csv(self, files_name, header=True):
